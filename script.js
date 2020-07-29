@@ -8,9 +8,7 @@ const newQuoteBtn = document.getElementById("new-quote");
 const loader = document.getElementById("loader")
 
 
-
-// Get Quote From API
-async function getQuote() {
+async function getQuoteFromApi() {
     showLoadingSpinner();
     const proxyUrl = "https://cors-anywhere.herokuapp.com/"
     const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json";
@@ -32,7 +30,7 @@ async function getQuote() {
         quoteText.innerText = data.quoteText;
         removeLoadingSpinner();
     } catch (err) {
-        getQuote();
+        getQuoteFromApi();
 
     }
 }
@@ -78,11 +76,10 @@ function facebookShare() {
 
 // Event Listener
 
-newQuoteBtn.addEventListener('click', getQuote);
+newQuoteBtn.addEventListener('click', getQuoteFromApi);
 twitterBtn.addEventListener('click', teewtQuote);
 whatsapBtn.addEventListener('click', whatsappShare);
 facebookBtn.addEventListener('click', facebookShare);
 
 //  On Load
 getQuote();
-loading();
