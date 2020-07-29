@@ -11,7 +11,7 @@ const loader = document.getElementById("loader")
 
 // Get Quote From API
 async function getQuote() {
-    ShowLoadingSpinner();
+    showLoadingSpinner();
     const proxyUrl = "https://cors-anywhere.herokuapp.com/"
     const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json";
     try {
@@ -30,14 +30,14 @@ async function getQuote() {
             quoteText.classList.remove('long-quote')
         }
         quoteText.innerText = data.quoteText;
-        ShowLoadingSpinner();
+        removeLoadingSpinner();
     } catch (err) {
         getQuote();
 
     }
 }
 
-function ShowLoadingSpinner() {
+function showLoadingSpinner() {
     loader.hidden = false;
     quoteContaier.hidden = true;
 }
